@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ROCK STAR OTT</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .cyan { color: cyan; }
+    .magenta { color: magenta; }
+    .fire { color: orange; }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 18px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 22px;
+    }
+
+    .video-block {
+      background: #1f1f1f;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .poster {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <span class="fire">🔥</span>
+      <span class="cyan">ROCK</span>
+      <span class="magenta">STAR</span>
+      <span class="fire">🔥</span>
+    </div>
+
+    <h2>Select Category</h2>
+
+    <button class="btn" onclick="showCategory('Anime')">🧝 Anime</button>
+    <button class="btn" onclick="showCategory('Marvel')">🦸 Marvel</button>
+    <button class="btn" onclick="showCategory('Hollywood')">🎬 Hollywood</button>
+
+    <div id="videos"></div>
+  </div>
+
+  <script>
+    const data = {
+      Anime: [
+  {
+    title: "Naruto",
+    url: "https://youtu.be/d699b2s490o?si=cJ3dtEH8oQfeLzT1",
+    img: "https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg"
+  },
+  {
+    title: "Demon Slayer",
+    url: "https://www.youtube.com/watch?v=ATJYac_dORw",
+    img: "https://upload.wikimedia.org/wikipedia/en/1/19/Kimetsu_no_Yaiba_volume_1_cover.jpg"
+  }
+],
+      Marvel: [
+        {
+          title: "Avengers: Endgame",
+          url: "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+          img: "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+        },
+        {
+          title: "Iron Man",
+          url: "https://www.youtube.com/watch?v=8ugaeA-nMTc",
+          img: "https://upload.wikimedia.org/wikipedia/en/7/70/Iron_Man_%282008_film%29_poster.jpg"
+        }
+      ],
+      Hollywood: [
+        {
+          title: "John Wick",
+          url: "https://www.youtube.com/watch?v=C0BMx-qxsP4",
+          img: "https://upload.wikimedia.org/wikipedia/en/9/98/John_Wick_TeaserPoster.jpg"
+        },
+        {
+          title: "Inception",
+          url: "https://www.youtube.com/watch?v=YoHD9XEInc0",
+          img: "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg"
+        }
+      ]
+    };
+
+    function showCategory(category) {
+      const videosDiv = document.getElementById("videos");
+      const videos = data[category];
+      let html = `<h2>${category} Shows</h2>`;
+      videos.forEach(video => {
+        html += `
+          <div class="video-block">
+            <div><strong>${video.title}</strong></div>
+            <img src="${video.img}" class="poster" alt="${video.title}">
+            <button class="btn" onclick="window.open('${video.url}', '_blank')">▶ Play</button>
+          </div>
+        `;
+      });
+      videosDiv.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
